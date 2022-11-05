@@ -74,7 +74,7 @@ class GenerateRoutesFromCsv
   def write_database_csv(routes_results, date)
     puts "Writing to database file format"
     CSV.open("#{@output_path}_#{date}.csv", "wb") do |csv|
-      csv << ["driver_id", "truck_id", "shift_date", "shift", "duration", "deliveries", "volume", "distance", "delivery_time", "type"]
+      csv << ["driver_id", "truck_id", "shift_date", "shift_date_str", "shift", "duration", "deliveries", "volume", "distance", "delivery_time", "type"]
       graphhopper_response_normalized(routes_results, date).each do |row|
         csv<< row
       end
@@ -104,7 +104,7 @@ class GenerateRoutesFromCsv
           delivery_time = route[:service_duration] / 60.0
 
           data << [
-            driver, truck, date, shift, duration, deliveries, volume, distance, delivery_time, @identifier
+            driver, truck, date, date, shift, duration, deliveries, volume, distance, delivery_time, @identifier
           ]
         end
       end
