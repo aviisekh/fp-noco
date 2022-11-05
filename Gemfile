@@ -44,8 +44,8 @@ gem "bootsnap", require: false
 
 gem 'jwt'
 gem 'figaro'
-
-
+gem 'activerecord-import'
+gem 'httparty'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

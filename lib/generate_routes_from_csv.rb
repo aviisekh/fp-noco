@@ -1,7 +1,7 @@
+require 'csv'
 class GenerateRoutesFromCsv
   GH_API_KEY = ENV["GH_API_KEY"]
   
-
   def initialize 
     routes_file_path =  Rails.root.join("public","all_routes.csv").to_s
     trucks_file_path =  Rails.root.join("public","trucks.csv").to_s
