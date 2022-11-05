@@ -1,4 +1,4 @@
-class Routing::Graphhopper::GenerateRoutesFromCsv
+class GenerateRoutesFromCsv
   GH_API_KEY = '3b42edf2-d125-4b80-8109-bb0902b1fd57'
   
 
