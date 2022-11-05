@@ -1,7 +1,7 @@
 require 'csv'
 class GenerateRoutesFromCsv
   GH_API_KEY = ENV["GH_API_KEY"]
-  
+
   def initialize 
     routes_file_path =  Rails.root.join("public","all_routes.csv").to_s
     trucks_file_path =  Rails.root.join("public","trucks.csv").to_s
@@ -32,10 +32,10 @@ class GenerateRoutesFromCsv
       groups.keys.each do |location|
         puts "For Location #{location}"
 
-        @trucks_data = @trucks_data.select { |row|  row['location'].downcase == location.downcase && row['product_type'] == 'Propane' }
+        td = @trucks_data.select { |row|  row['location'].downcase == location.downcase && row['product_type'] == 'Propane' }
         json_data = {
-          vehicles: graphhopper_vehicles,
-          vehicle_types: graphhopper_vehicle_types,
+          vehicles: graphhopper_vehicles(td),
+          vehicle_types: graphhopper_vehicle_types(td),
           services: graphhopper_delivery_services(groups[location]),
           objectives: graphhopper_objectives,
           configuration: graphhopper_configuration
@@ -112,8 +112,8 @@ class GenerateRoutesFromCsv
     data
   end
 
-  def graphhopper_vehicles
-    @trucks_data.map do |truck_data|
+  def graphhopper_vehicles(td)
+    td.map do |truck_data|
       {
         "vehicle_id": truck_data['vehicle_number'],
         "type_id": "#{truck_data['vehicle_number']}-#{truck_data['type1']}",
@@ -132,8 +132,8 @@ class GenerateRoutesFromCsv
     end
   end
 
-  def graphhopper_vehicle_types
-    @trucks_data.map do |truck_data|
+  def graphhopper_vehicle_types(td)
+    td.map do |truck_data|
       {
         "type_id": "#{truck_data['vehicle_number']}-#{truck_data['type1']}",
         "profile": 'Truck',
