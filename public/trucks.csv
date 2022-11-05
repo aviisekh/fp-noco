@@ -1,0 +1,96 @@
+"vehicle_number","make","type1","state","gvw","location","service_type","tank_capacity","relay_device_num","flush_amt_gals","amt_per_gals","meters","comp1","comp2","comp3","comp4","total","product_type","notes","lat","lon"
+"1071","Kenworth","Bobtail","NY","33000","Arcade","Propane Bobtail",3499,"6001014231",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.5335122,-78.4327868
+"1069","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Arcade","Oil Tankwagon",2800,"6001014255","27","($0,27)",2,1100,700,600,400,2800,NULL,NULL,42.5335122,-78.4327868
+"1044","Kenworth","Bobtail","NY","33000","Arcade","Propane Bobtail",3499,"4863051679",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.5335122,-78.4327868
+"1009","Ford","Bobtail","NY","19500","Arcade","Propane Bobtail",1000,"4674724142",NULL,NULL,1,1000,NULL,NULL,NULL,1000,"Propane",NULL,42.5335122,-78.4327868
+"1006","Kenworth","Bobtail","NY","33000","Arcade","Propane Bobtail",3000,"4674640915",NULL,NULL,1,3000,NULL,NULL,NULL,3000,"Propane",NULL,42.5335122,-78.4327868
+"988","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Arcade","Oil Tankwagon",4500,"4674593003","27","($0,27)",2,1500,1200,1000,800,4500,NULL,NULL,42.5335122,-78.4327868
+"937","Ford","Tank Wagon - 6 Wheeler","NY","19500","Arcade","Oil Tankwagon",1200,"4674721886","27","($0,27)",1,800,400,NULL,NULL,1200,NULL,NULL,42.5335122,-78.4327868
+"930","Peterbilt","Bobtail","NY","33000","Arcade","Propane Bobtail",3400,"4674641240",NULL,NULL,1,3400,NULL,NULL,NULL,3400,"Propane",NULL,42.5335122,-78.4327868
+"909","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Arcade","Oil Tankwagon",4400,"4674986798","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.5335122,-78.4327868
+"887","Peterbuilt","Tank Wagon - 10 Wheeler","NY","60000","Arcade","Oil Tankwagon",4500,"4674644240","27","($0,27)",2,1500,1200,1000,800,4500,NULL,NULL,42.5335122,-78.4327868
+"1073","Kenworth","Bobtail","NY","33000","Rochester","Propane Bobtail",3499,"6001014070",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.2268339,-77.6452229
+"1067","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Rochester","Oil Tankwagon",2800,"4674638267","27","($0,27)",1,1000,600,700,500,2800,NULL,NULL,43.2268339,-77.6452229
+"1063","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Rochester","Oil Tankwagon",4250,"4674934034","27","($0,27)",1,1000,1750,2000,NULL,4750,NULL,NULL,43.2268339,-77.6452229
+"1042","Ford","Tank Wagon - 6 Wheeler","NY","19500","Rochester","Oil Tankwagon",1200,"4674721890","27","($0,27)",1,800,400,NULL,NULL,1200,NULL,NULL,43.2268339,-77.6452229
+"1035","Peterbuilt","Tank Wagon - 10 Wheeler","NY","60000","Rochester","Oil Tankwagon",4400,"6001024713","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,43.2268339,-77.6452229
+"1015","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Rochester","Oil Tankwagon",4400,"4674642755","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,43.2268339,-77.6452229
+"1008","Kenworth","Bobtail","NY","33000","Rochester","Propane Bobtail",3499,"4674642278",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.2268339,-77.6452229
+"1007","Kenworth","Bobtail","NY","33000","Rochester","Propane Bobtail",3499,"4674627454",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.2268339,-77.6452229
+"1002","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Rochester","Oil Tankwagon",2800,"4674643630","27","($0,27)",2,1000,600,700,500,2800,NULL,NULL,43.2268339,-77.6452229
+"996","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Rochester","Oil Tankwagon",4450,"4674580267","27","($0,27)",2,2000,1700,750,NULL,4450,NULL,NULL,43.2268339,-77.6452229
+"995","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Rochester","Oil Tankwagon",4400,"4674643102","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,43.2268339,-77.6452229
+"959","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Rochester","Oil Tankwagon",2800,"4674642574","27","($0,27)",1,2000,800,NULL,NULL,2800,NULL,NULL,43.2268339,-77.6452229
+"938","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Rochester","Oil Tankwagon",2725,"4674644063","27","($0,27)",1,625,1000,1100,NULL,2725,NULL,NULL,43.2268339,-77.6452229
+"933","Kenworth","Bobtail","NY","33000","Rochester","Propane Bobtail",3499,"4674641331",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.2268339,-77.6452229
+"932","Kenworth","Bobtail","NY","33000","Rochester","Propane Bobtail",3499,"4674644189",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.2268339,-77.6452229
+"915","Kenworth","Bobtail","NY","33000","Rochester","Propane Bobtail",3499,"6001024975",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.2268339,-77.6452229
+"914","Kenworth","Bobtail","NY","33000","Rochester","Propane Bobtail",3499,"6001025255",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.2268339,-77.6452229
+"911","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Rochester","Oil Tankwagon",4400,"6001025070","27","($0,27)",1,1500,1100,1000,800,4400,NULL,NULL,43.2268339,-77.6452229
+"889","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Rochester","Oil Tankwagon",4400,"6001024753","27","($0,27)",2,2000,1000,800,600,4400,NULL,NULL,43.2268339,-77.6452229
+"781","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Rochester","Oil Tankwagon",2700,"6001025062","27","($0,27)",1,700,1000,1000,NULL,2700,NULL,NULL,43.2268339,-77.6452229
+"C32","Kenworth","Bobtail","NY","33000","Rochester","Propane Bobtail",3499,"4674595815",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.2268339,-77.6452229
+"1068","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Syracuse","Oil Tankwagon",2800,"6001014558","27","($0,27)",2,1000,600,700,500,2800,NULL,NULL,43.0856489,-76.151707
+"1022","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Syracuse","Oil Tankwagon",4400,"4674641474","27","($0,27)",2,1500,1100,1000,800,4400,NULL,"1022A is the same truck but separate handheld device",43.0856489,-76.151707
+"1020","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Syracuse","Oil Tankwagon",4400,"4674644665","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,43.0856489,-76.151707
+"1001","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Syracuse","Oil Tankwagon",4400,"4674641958","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,43.0856489,-76.151707
+"1000","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Syracuse","Oil Tankwagon",4400,"4674632910","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,43.0856489,-76.151707
+"997","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Syracuse","Oil Tankwagon",4400,"4674644786","27","($0,27)",1,2700,1000,700,NULL,4400,NULL,NULL,43.0856489,-76.151707
+"976","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Syracuse","Oil Tankwagon",2800,"4674638348","27","($0,27)",1,1000,1000,800,NULL,2800,NULL,NULL,43.0856489,-76.151707
+"742","Freightliner","Tank Wagon - 6 Wheeler","NY","33000","Syracuse","Oil Tankwagon",2800,"4674643856","27","($0,27)",1,600,1100,1100,NULL,2800,NULL,NULL,43.0856489,-76.151707
+"689","Peterbuilt","Tank Wagon - 6 Wheeler","NY","33000","Syracuse","Oil Tankwagon",2700,"4674986673","27","($0,27)",1,500,1200,1000,NULL,2700,NULL,NULL,43.0856489,-76.151707
+"1033","Peterbuilt","Tank Wagon - 10 Wheeler","NY","60000","Lockport","Oil Tankwagon",4400,"6001024924","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,43.1652408,-78.7166422
+"980","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Lockport","Oil Tankwagon",4400,"4863052291","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,43.1652408,-78.7166422
+"936","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Lockport","Oil Tankwagon",2800,"4674640259","27","($0,27)",1,1000,1000,800,NULL,2800,NULL,NULL,43.1652408,-78.7166422
+"934","Kenworth","Bobtail","NY","33000","Lockport","Propane Bobtail",3499,"4674641006",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.1652408,-78.7166422
+"790","Peterbilt","Bobtail","NY","33000","Lockport","Propane Bobtail",3000,"4674640207",NULL,NULL,1,3000,NULL,NULL,NULL,3000,"Propane",NULL,43.1652408,-78.7166422
+"755","Kenworth","Bobtail","NY","33000","Lockport","Propane Bobtail",3499,"4674987054",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.1652408,-78.7166422
+"1084","Kenworth","Bobtail","NY","33000","Akron","Propane Bobtail",3499,"3672051081",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.9977092,-78.4797232
+"1070","Kenworth","Bobtail","NY","33000","Akron","Propane Bobtail",3499,"4674725669",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.9977092,-78.4797232
+"1040","Peterbuilt","Tank Wagon - 10 Wheeler","NY","60000","Akron","Oil Tankwagon",4400,"4674722681","27","($0,27)",1,1500,1100,1000,800,4400,NULL,NULL,42.9977092,-78.4797232
+"1005","Kenworth","Bobtail","NY","33000","Akron","Propane Bobtail",3499,"4674627075",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.9977092,-78.4797232
+"994","Ford","Bobtail","NY","19500","Akron","Propane Bobtail",800,"4674722692",NULL,NULL,1,800,NULL,NULL,NULL,800,"Propane",NULL,42.9977092,-78.4797232
+"940","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Akron","Oil Tankwagon",4500,"4674643869","27","($0,27)",2,1500,1200,1000,800,4500,NULL,NULL,42.9977092,-78.4797232
+"794","Kenworth","Tank Wagon - 6 Wheeler","NY","31000","Akron","Oil Tankwagon",2800,"4674630798","27","($0,27)",1,600,1100,1100,NULL,2800,NULL,NULL,42.9977092,-78.4797232
+"779","Kenworth","Bobtail","NY","33000","Akron","Propane Bobtail",3499,"4674644878",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.9977092,-78.4797232
+"698","Peterbuilt","Bobtail","NY","33000","Akron","Propane Bobtail",3200,"4863051812",NULL,NULL,1,3200,NULL,NULL,NULL,3200,"Propane",NULL,42.9977092,-78.4797232
+"1045","Kenworth","Bobtail","NY","33000","Cato","Propane Bobtail",3499,"4863045426",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.2355818,-76.5216955
+"1072","Kenworth","Bobtail","NY","33000","Romulus","Propane Bobtail",3499,"6001014932",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.8084335,-76.8342106
+"1065","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Romulus","Oil Tankwagon",4400,"6001014237","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.8084335,-76.8342106
+"991","Kenworth","Bobtail","NY","33000","Romulus","Propane Bobtail",3499,"4674644414",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.8084335,-76.8342106
+"1041","Peterbuilt","Tank Wagon - 10 Wheeler","NY","60000","Tonawanda","Oil Tankwagon",4400,"6001025265","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.9894041,-78.9206472
+"1038","Peterbuilt","Tank Wagon - 10 Wheeler","NY","60000","Tonawanda","Oil Tankwagon",4200,"4674986810","27","($0,27)",2,2000,1200,1000,NULL,4200,NULL,NULL,42.9894041,-78.9206472
+"1021","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Tonawanda","Oil Tankwagon",2950,"4674632423","27","($0,27)",1,1500,1000,450,NULL,2950,NULL,NULL,42.9894041,-78.9206472
+"1003","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Tonawanda","Oil Tankwagon",2800,"6001024919","27","($0,27)",1,1000,1000,800,NULL,2800,NULL,NULL,42.9894041,-78.9206472
+"989","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Tonawanda","Oil Tankwagon",4400,"4674632264","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.9894041,-78.9206472
+"975","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Tonawanda","Oil Tankwagon",2800,"4674641388","27","($0,27)",1,1000,1000,800,NULL,2800,NULL,NULL,42.9894041,-78.9206472
+"941","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Tonawanda","Oil Tankwagon",4400,"4674600104","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.9894041,-78.9206472
+"912","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Tonawanda","Oil Tankwagon",4400,"4674639912","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.9894041,-78.9206472
+"831","Peterbuilt","Tank Wagon - 10 Wheeler","NY","55000","Tonawanda","Oil Tankwagon",4450,"4674646272","27","($0,27)",1,2000,1700,750,NULL,4450,NULL,NULL,42.9894041,-78.9206472
+"796","Peterbilt","Tank Wagon - 10 Wheeler","NY","56540","Tonawanda","Oil Tankwagon",4450,"4674726736","27","($0,27)",1,4450,NULL,NULL,NULL,4450,"Diesel",NULL,42.9894041,-78.9206472
+"723","Peterbuilt","Tank Wagon - 10 Wheeler","NY","52350","Tonawanda","Oil Tankwagon",4200,"4674644170","27","($0,27)",2,2000,1200,1000,NULL,4200,NULL,NULL,42.9894041,-78.9206472
+"C28","Kenworth","Bobtail","NY","33000","Tonawanda","Propane Bobtail",3200,"4674722513",NULL,NULL,1,2800,NULL,NULL,NULL,2800,"Propane",NULL,42.9894041,-78.9206472
+"1066","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Cherry Creek","Oil Tankwagon",4400,"4674724324","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.2947262,-79.0989916
+"1043","Ford","Bobtail","NY","19500","Cherry Creek","Propane Bobtail",1200,"4674935209",NULL,NULL,1,1200,NULL,NULL,NULL,1200,"Propane",NULL,42.2947262,-79.0989916
+"1024","Kenworth","Bobtail","NY","33000","Cherry Creek","Propane Bobtail",3499,"4674641379",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.2947262,-79.0989916
+"1019","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Cherry Creek","Oil Tankwagon",2700,"4674600377","27","($0,27)",2,400,600,700,1000,2700,NULL,NULL,42.2947262,-79.0989916
+"998","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Cherry Creek","Oil Tankwagon",4500,"4674597976","27","($0,27)",2,1500,1200,1000,800,4500,NULL,NULL,42.2947262,-79.0989916
+"972","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Cherry Creek","Oil Tankwagon",4500,"4674600628","27","($0,27)",2,1500,1200,1000,800,4500,NULL,NULL,42.2947262,-79.0989916
+"929","Peterbilt","Bobtail","NY","33000","Cherry Creek","Propane Bobtail",3400,"4674641345",NULL,NULL,1,3400,NULL,NULL,NULL,3400,"Propane",NULL,42.2947262,-79.0989916
+"913","Kenworth","Bobtail","NY","33000","Cherry Creek","Propane Bobtail",3499,"4674642761",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.2947262,-79.0989916
+"908","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Cherry Creek","Oil Tankwagon",4400,"4674641449","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.2947262,-79.0989916
+"894","Kenworth","Bobtail","NY","33000","Cherry Creek","Propane Bobtail",3499,"4674640908",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.2947262,-79.0989916
+"858","Kenworth","Bobtail","NY","33000","Cherry Creek","Propane Bobtail",3499,"4674722691",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,42.2947262,-79.0989916
+"782","Peterbuilt","Tank Wagon - 10 Wheeler","NY","50000","Cherry Creek","Oil Tankwagon",4500,"4674643850","27","($0,27)",2,1500,1200,1000,800,4500,NULL,NULL,42.2947262,-79.0989916
+"1064","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Bath","Oil Tankwagon",4400,"6001014697","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.3708687,-77.3634202
+"1034","Peterbuilt","Tank Wagon - 10 Wheeler","NY","60000","Bath","Oil Tankwagon",4400,"4863046729","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.3708687,-77.3634202
+"919","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Bath","Oil Tankwagon",2800,"4674643931","27","($0,27)",1,1100,700,600,400,2800,NULL,NULL,42.3708687,-77.3634202
+"1032","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Albany","Oil Tankwagon",4400,"4863053032","27","($0,27)",1,1500,1100,1000,800,4400,NULL,NULL,42.6110601,-73.7556001
+"1004","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Albany","Oil Tankwagon",2800,"4674647219","27","($0,27)",1,1000,1000,800,NULL,2800,NULL,NULL,42.6110601,-73.7556001
+"990","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Albany","Oil Tankwagon",4400,"4674598725","27","($0,27)",1,1500,1100,1000,800,4400,NULL,NULL,42.6110601,-73.7556001
+"935","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Albany","Oil Tankwagon",4400,"4674638645","27","($0,27)",2,1500,1100,1000,800,4400,NULL,"935A is the same truck but separate handheld device",42.6110601,-73.7556001
+"910","Peterbilt","Tank Wagon - 10 Wheeler","NY","60000","Albany","Oil Tankwagon",4400,"4674638221","27","($0,27)",2,1500,1100,1000,800,4400,NULL,NULL,42.6110601,-73.7556001
+"892","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Albany","Oil Tankwagon",2400,"4863052667","27","($0,27)",1,800,800,800,NULL,2400,NULL,NULL,42.6110601,-73.7556001
+"888","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Albany","Oil Tankwagon",2800,"4674647172","27","($0,27)",1,1900,900,NULL,NULL,2800,NULL,NULL,42.6110601,-73.7556001
+"832","Kenworth","Tank Wagon - 6 Wheeler","NY","33000","Albany","Oil Tankwagon",2800,"4674647133","27","($0,27)",1,1500,800,500,NULL,2800,NULL,NULL,42.6110601,-73.7556001
+"931","Kenworth","Bobtail","NY","33000","Ransomville","Propane Bobtail",3499,"4674722657",NULL,NULL,1,3499,NULL,NULL,NULL,3499,"Propane",NULL,43.2836438,-78.9088004

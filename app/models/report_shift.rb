@@ -1,0 +1,2 @@
+class ReportShift < ApplicationRecord
+end
