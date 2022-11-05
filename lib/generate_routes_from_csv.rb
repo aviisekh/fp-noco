@@ -1,5 +1,5 @@
 class GenerateRoutesFromCsv
-  GH_API_KEY = '3b42edf2-d125-4b80-8109-bb0902b1fd57'
+  GH_API_KEY = ENV["GH_API_KEY"]
   
 
   def initialize 
