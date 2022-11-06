@@ -2,13 +2,14 @@ require 'csv'
 class GenerateRoutesFromCsv
   GH_API_KEY = ENV["GH_API_KEY"]
 
-  def initialize 
+  def initialize(from_date=nil, number_of_days=0)
+    from_date = (from_date || '2021-12-01').to_date
+    to_date = from_date + number_of_days.days
     routes_file_path =  Rails.root.join("public","all_routes.csv").to_s
     trucks_file_path =  Rails.root.join("public","trucks.csv").to_s
-    from_date = "2021-12-02".to_date
     
     @output_path = "#{Rails.root}/public/graphhopper_results"
-    @date_range = (from_date..from_date.end_of_month).to_a
+    @date_range = (from_date..to_date).to_a
     @identifier = "GH20221103204537"
     
     @routes_data = CSV.parse(File.read(routes_file_path), headers: true)
@@ -64,7 +65,7 @@ class GenerateRoutesFromCsv
   private
 
   def write_data_to_noco_db(routes_results, date)
-    cols = ['driver_id', 'truck_id', 'shift_date', 'shift', 'duration_hours', 'deliveries', 'volume', 'distance', 'delivery_time_minutes', 'type']
+    cols = ['driver_id', 'truck_id', 'shift_date', 'shift_date_str', 'shift', 'duration_hours', 'deliveries', 'volume', 'distance', 'delivery_time_minutes', 'type']
     values = graphhopper_response_normalized(routes_results, date)
 
     puts "Writing the rows in db"
