@@ -5,6 +5,10 @@ class DashboardController < ApplicationController
   METABASE_SECRET_KEY = ENV["METABASE_SECRET_KEY"]
   
   def index 
+    if (chart_params["date_range"].blank? || chart_params["type"].blank? ) 
+      redirect_to root_path(params: {date_range: "2021-11-01~2021-11-10", type: "NOCO2,FP3"})
+    end
+    
     payload = {
       :resource => {:dashboard => 324},
       :params => chart_params,
@@ -19,7 +23,7 @@ class DashboardController < ApplicationController
   def chart_params 
     {
       "date_range" => params[:date_range],
-      "type" => params[:type].split(",")
+      "type" => params[:type]&.split(",")
     }
   end 
 end
