@@ -19,7 +19,7 @@ class DashboardController < ApplicationController
   def chart_params 
     {
       "date_range" => params[:date_range],
-      "text_contains" => params[:text].split(",")
+      "type" => params[:type].split(",")
     }
   end 
 end
