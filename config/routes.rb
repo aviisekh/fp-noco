@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "dashboard#index"
+  get "/upload_fp_csvs", to:"dashboard#upload_fp_csvs"
+  post "/submit_fp_csvs", to:"dashboard#submit_fp_csvs"
   
 end

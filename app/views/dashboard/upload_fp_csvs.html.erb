@@ -1,0 +1,21 @@
+<h1>Upload FP generated files</h1>
+
+<%= form_for :fp_json_files,:url=>submit_fp_csvs_path,:remote=>true,:html => { :multipart => true } do |f| %>
+
+    <div>
+        <p>Existing Data Idetifiers: <%= @available_types%></p> 
+    </div>
+
+    <div class='form-div'>
+        <%= f.label :fp_file, "Select Files:", class: 'form-label'%>
+        <%= f.file_field :fp_file, :required => true, multiple: true %>
+    </div>
+    <div class='form-div'>
+        <%= f.label :fp_file_type, "Insert Data Identifier, (eg. FP2):", class: 'form-label' %>
+        <%= f.text_field :fp_file_type, :required => true %>
+    </div>
+    <div class='form-div'>
+        <%= f.button :submit ,:class=> "btn btn-go button",data: {"disable-with" => "Processing..."}%>
+    </div>
+<%end%>
+

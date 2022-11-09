@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+ .form-label {
+  display: inline-block;
+  width: 180px;
+ }
+
+ .form-div {
+  padding: 10px
+ }
