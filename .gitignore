@@ -14,6 +14,9 @@
 !/tmp/.keep
 config/application.yml
 
+.env
+/public/*.json
+
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
