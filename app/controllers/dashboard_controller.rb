@@ -1,4 +1,3 @@
-require 'debug'
 class DashboardController < ApplicationController
   before_action :set_fp_generated_files, only: :submit_fp_csvs
   require 'jwt'

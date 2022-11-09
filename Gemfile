@@ -46,7 +46,6 @@ gem 'jwt'
 gem 'figaro'
 gem 'activerecord-import'
 gem 'httparty'
-gem 'simple_form'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
