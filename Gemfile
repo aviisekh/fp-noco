@@ -62,6 +62,15 @@ group :development do
   gem "web-console"
   gem 'pry-rails'
 
+  gem 'pry-rails'
+  gem 'pry-byebug'
+
+  gem 'dotenv-rails'
+  # Combine 'pry' with 'byebug'. Adds 'step', 'next', 'finish', 'continue' and 'break' commands
+  # to control execution
+  # Walk the stack in a Pry session
+  gem 'pry-stack_explorer'
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 

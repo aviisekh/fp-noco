@@ -33,7 +33,17 @@ class GenerateRoutesFromCsv
       groups.keys.each do |location|
         puts "For Location #{location}"
 
-        td = @trucks_data.select { |row|  row['location'].downcase == location.downcase && row['product_type'] == 'Propane' }
+        # td = @trucks_data.select { |row|  row['location'].downcase == location.downcase && row['product_type'] == 'Propane' }
+        td = []
+        groups[location].each do |r|
+          next if td.select { |row| row['truck_id'] == r['truck_id'] }.size > 0
+
+          td << {
+            truck_id: r['truck_id'],
+            first_route: r,
+            truck: @trucks_data.select { |row| row['vehicle_number'] == r['truck_id'] }
+          }.with_indifferent_access
+        end
         json_data = {
           vehicles: graphhopper_vehicles(td),
           vehicle_types: graphhopper_vehicle_types(td),
@@ -52,7 +62,7 @@ class GenerateRoutesFromCsv
           response: response
         }
         # break
-        sleep(10.seconds)
+        sleep(1.minute)
       end
 
       write_graphhopper_request_response(routes_results, date)
@@ -95,7 +105,7 @@ class GenerateRoutesFromCsv
       json = json.with_indifferent_access
       if json[:response][:solution]
         json[:response][:solution][:routes].each_with_index do |route, index|
-          driver = index+1
+          driver = index + 1
           truck = route[:vehicle_id]
           shift = 1
           duration = route[:completion_time] / 3600.0
@@ -116,17 +126,17 @@ class GenerateRoutesFromCsv
   def graphhopper_vehicles(td)
     td.map do |truck_data|
       {
-        "vehicle_id": truck_data['vehicle_number'],
-        "type_id": "#{truck_data['vehicle_number']}-#{truck_data['type1']}",
+        "vehicle_id": truck_data['truck_id'],
+        "type_id": "#{truck_data['truck_id']}-#{truck_data['truck'][0]['type1']}",
         "start_address": {
-          "location_id": truck_data['location'] + '-' + truck_data['state'],
-          "lon": truck_data['lon'].to_f,
-          "lat": truck_data['lat'].to_f
+          "location_id": truck_data['truck'][0]['location'] + '-' + truck_data['truck'][0]['state'],
+          "lon": truck_data['first_route']['truck_start_location_lon'].to_f,
+          "lat": truck_data['first_route']['truck_start_location_lat'].to_f
         },
         "end_address": {
-          "location_id": truck_data['location'] + '-' + truck_data['state'],
-          "lon": truck_data['lon'].to_f,
-          "lat": truck_data['lat'].to_f
+          "location_id": truck_data['truck'][0]['location'] + '-' + truck_data['truck'][0]['state'],
+          "lon": truck_data['first_route']['truck_start_location_lon'].to_f,
+          "lat": truck_data['first_route']['truck_start_location_lat'].to_f
         },
         "skills": ['PROPANE']
       }
@@ -136,9 +146,9 @@ class GenerateRoutesFromCsv
   def graphhopper_vehicle_types(td)
     td.map do |truck_data|
       {
-        "type_id": "#{truck_data['vehicle_number']}-#{truck_data['type1']}",
+        "type_id": "#{truck_data['truck_id']}-#{truck_data['truck'][0]['type1']}",
         "profile": 'Truck',
-        "capacity": [truck_data['tank_capacity'].to_i]
+        "capacity": [truck_data['truck'][0]['tank_capacity'].to_i]
       }
     end.uniq
   end
