@@ -1,0 +1,15 @@
+
+<h1> <%=label%> scenario</h1>
+<%= form_for(@scenario) do |s| %>
+  <table>
+    <tr>
+      <td><%= s.label :name, "Name" %></td>
+      <td><%= s.text_field :name %> </td>
+      <td><%= s.label :description %></td>
+      <td><%= s.text_area :description, cols: 60, rows: 3 %> </td>
+    </tr>
+    <tr>
+      <td colspan="3"><%= s.submit label, :disable_with => "Proccessing..."%> </td>
+    </tr>
+  </table>
+<%end%>

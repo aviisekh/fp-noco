@@ -1,9 +1,13 @@
-<h1>FP Noco Analysis</h1>
+<h1>FP Noco Analysis:   <%= @range.split('~').join(' - ') %></h1>
+<% if @scenario %>
+    <h2><%=@scenario.name%><h2>
+    <%= @scenario.description %>
+<% end %>
 
 <iframe
     src="<%= @iframe_url %>"
     frameborder="0"
     width="100%"
-    height="600"
+    height="1000"
     allowtransparency
 ></iframe>

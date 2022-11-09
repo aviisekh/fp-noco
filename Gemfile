@@ -46,6 +46,7 @@ gem 'jwt'
 gem 'figaro'
 gem 'activerecord-import'
 gem 'httparty'
+gem 'simple_form'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -64,7 +65,7 @@ group :development do
 
   gem 'pry-rails'
   gem 'pry-byebug'
-
+  gem 'debug'
   gem 'dotenv-rails'
   # Combine 'pry' with 'byebug'. Adds 'step', 'next', 'finish', 'continue' and 'break' commands
   # to control execution

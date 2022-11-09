@@ -1,3 +1,4 @@
+require 'debug'
 class DashboardController < ApplicationController
   before_action :set_fp_generated_files, only: :submit_fp_csvs
   require 'jwt'
@@ -6,6 +7,8 @@ class DashboardController < ApplicationController
   METABASE_SECRET_KEY = ENV["METABASE_SECRET_KEY"]
   
   def index 
+    @scenario = Scenario.find_by(id: params[:scenario_id])
+    @range=params[:date_range]
     if (chart_params["date_range"].blank? || chart_params["type"].blank? ) 
       redirect_to root_path(params: {date_range: "2021-11-01~2021-11-10", type: "NOCO2,FP3"})
     end
@@ -17,7 +20,7 @@ class DashboardController < ApplicationController
     }
     token = JWT.encode payload, METABASE_SECRET_KEY
     
-    @iframe_url = METABASE_SITE_URL + "/embed/dashboard/" + token + "#bordered=true&titled=true"
+    @iframe_url = METABASE_SITE_URL + "/embed/dashboard/" + token + "#bordered=true&titled=false"
   end
 
   def upload_fp_csvs

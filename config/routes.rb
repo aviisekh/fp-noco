@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   root "dashboard#index"
   get "/upload_fp_csvs", to:"dashboard#upload_fp_csvs"
   post "/submit_fp_csvs", to:"dashboard#submit_fp_csvs"
+
+  resources :scenarios
   
 end
