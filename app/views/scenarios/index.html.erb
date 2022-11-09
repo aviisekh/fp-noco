@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>Description</th>
       <th colspan="2"></th>
@@ -12,6 +13,7 @@
   <tbody>
     <% @scenarios.each do |scenario| %>
       <tr>
+        <td><%= scenario.id %></td>
         <td><%= scenario.name %></td>
         <td><%= scenario.description %></td>
         <td><%= link_to "Edit", edit_scenario_path(scenario) %></td>
