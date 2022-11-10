@@ -1,3 +1,3 @@
 class ReportShift < ApplicationRecord
-  belongs_to :scenario
+  belongs_to :scenario, optional: true
 end

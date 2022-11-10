@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_09_121812) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_10_135731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -298,6 +298,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_121812) do
     t.string "shiptozip", limit: 2
     t.integer "zerogallondelivery"
     t.string "deliverycenter", limit: 8
+  end
+
+  create_table "order_2019", id: false, force: :cascade do |t|
+    t.string "document_no"
+    t.string "posting_date_str"
+    t.date "posting_date"
+    t.string "delivered_date_str"
+    t.date "delivered_date"
+    t.string "customer_posting_group"
+    t.string "delivery_ref_no"
+    t.string "bill_to_customer"
+    t.string "customer_pod"
+    t.string "shipto_address"
+    t.string "shipto_address_2"
+    t.string "shipto_city"
+    t.string "shipto_state"
+    t.string "shipto_zip"
+    t.integer "zero_gallon_delivery"
+    t.string "gen_bus_posting_group"
+    t.string "delivery_zone"
+    t.string "delivery_center"
+    t.string "item_no"
+    t.string "description"
+    t.string "unit_of_measure"
+    t.float "volume"
+    t.string "type"
+    t.integer "ideal_in_gallons"
+    t.integer "size_in_gallons"
+    t.string "fuels_forecast_method"
   end
 
   create_table "planned_orders", id: false, force: :cascade do |t|
@@ -608,6 +637,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_121812) do
     t.string "location"
     t.float "lat"
     t.float "lon"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
