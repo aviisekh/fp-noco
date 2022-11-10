@@ -19,7 +19,7 @@ class GenerateRoutesFromCsv
   def execute
     @date_range.each do |date|
       puts "==== For date #{date.to_s} ====="
-      selected = @routes_data.select { |row| row['shift_date'].to_date == date.to_date}
+      selected = @routes_data.select { |row| row['shift_date'].to_date == date.to_date && row['type'] == 'Delivery' }
       groups = {}
       selected.each do |row|
         if groups[row['truck_location']]
@@ -162,7 +162,6 @@ class GenerateRoutesFromCsv
       else
         keys[unique_key] += 1
       end
-
       {
         "id": "#{keys[unique_key]} - #{unique_key}",
         "type": "delivery",
@@ -175,7 +174,6 @@ class GenerateRoutesFromCsv
         "size": [shipto['volume'].to_i],
         "duration": (shipto['delivery_end'].to_time - shipto['delivery_start'].to_time).to_i,
         "required_skills": ['PROPANE']
-
       }
     end
   end
