@@ -91,7 +91,7 @@ class ImportShiftReportFromFpJson
           delivery_time += path.dig(:duration, :minutes).to_i
         end
         # csv << [driver_id, truck_id, shift_date, 1, used_time, deliveries, volume, (used_km * 0.621371), delivery_time, 'FP']
-        rows << [truck_id, driver_id, shift_date, 1, (used_time), deliveries, volume, used_miles, delivery_time, @identifier, cluster_id, (fill_rate.sum(0.0) / fill_rate.size)]
+        rows << [truck_id, driver_id, shift_date, 1, (used_time/60.0), deliveries, volume, used_miles, delivery_time, @identifier, cluster_id, (fill_rate.sum(0.0) / fill_rate.size)]
       end
     end
     rows

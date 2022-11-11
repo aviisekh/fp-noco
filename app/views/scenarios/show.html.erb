@@ -1,29 +1,34 @@
-<br />
-<table>
-  <tr>
-    <td><%= label_tag :name, "Name" %></td>
-    <td><%= @scenario.name %> </td>
-  </tr>
-  <tr>
-    <td><%= label_tag :description %></td>
-    <td><%= @scenario.description %> </td>
-  </tr>
-  <tr>
-    <td><%= label_tag :link, "Link" %></td>
-    <td><%= link_to "link", @scenario.link if @scenario.link %> </td>
-  </tr>
-  <tr>
-    <td><%= label_tag :version, "Version" %></td>
-    <td><%= @scenario.version %> </td>
-  </tr>
 
-  <tr>
-    <td><%= label_tag :hours_saved, "Hours saved" %></td>
-    <td><%= @scenario.hours_saved %> </td>
-  </tr>
-  <tr>
-    <td><%= label_tag :miles_saved, "Miles saved" %></td>
-    <td><%= @scenario.miles_saved %> </td>
-  </tr>
+<div class="form-group">
+  <div class="form-group row">
+    <%= label_tag :name, "Name", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=@scenario.name%>">
+    </div>
+    <%= label_tag :description, "Description", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=@scenario.description%>">
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= label_tag :link, "Link", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= link_to "link", @scenario.link if @scenario.link %>
+    </div>
+    <%= label_tag :version, "Version", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=@scenario.version%>">
+    </div>
+  </div>
 
-</table>
+  <div class="form-group row">
+    <%= label_tag :hours_saved, "Hours saved", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=@scenario.hours_saved%>">
+    </div>
+    <%= label_tag :miles_saved, "Miles saved", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=@scenario.miles_saved%>">
+    </div>
+  </div>  
+</div>
