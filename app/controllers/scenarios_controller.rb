@@ -54,7 +54,7 @@ class ScenariosController < ApplicationController
   private
 
   def scenario_params
-    params.require(:scenario).permit(:name, :description, :link, :version, :hours_saved, :miles_saved)
+    params.require(:scenario).permit(:name, :description, :link, :version, :hours_saved, :miles_saved, :files)
   end 
 end
 

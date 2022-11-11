@@ -24,7 +24,54 @@ class ImportShiftReportFromFpJson
     end
   end
 
+  def routes
+    CSV.open("#{Rails.root}/public/routes_fp.csv", "wb") do |csv|
+      csv << ["shift_date", "truck_id", "driver", "product", "volume", "service_time", "lat", "lon", "customer_pod", "address", "city", "state", "zip", "truck_lat", "truck_lon"]
+      @files.each do |f|
+        json = JSON.load f.read
+        get_routes(json, csv)
+      end
+    end
+  end
+
   private
+
+  def get_routes(json, csv)
+    json = json.with_indifferent_access
+
+    shift_date = json[:weekKey].split('_')[0].to_date
+
+    json[:fpClusters].each_key do |cluster_key|
+      cluster = json.dig(:fpClusters, cluster_key)
+
+      cluster[:paths].each_with_index do |base_path, index|
+
+        truck_id = base_path.dig(:vehicle, :id)
+        truck_lat = base_path.dig(:base, :lat).to_f
+        truck_lon = base_path.dig(:base, :lon).to_f
+        # driver_id = base_path.dig(:driver, :id)
+        driver_id = index + 1
+
+        base_path[:path].each do |path|
+          amount = path.dig(:product, :amount).to_f
+          product_name = path.dig(:product, :name)
+          delivery_time = path.dig(:duration, :minutes).to_i
+          lat = path.dig(:location, :lat).to_f
+          lon = path.dig(:location, :lon).to_f
+          customer_pod = path.dig(:location, :id)
+          address = path.dig(:location, :place)
+          city = path.dig(:location, :city)
+          state = path.dig(:location, :state)
+          zip = path.dig(:location, :zip)
+
+          csv << [
+            shift_date, truck_id, driver_id, product_name, amount, delivery_time, lat, lon,
+            customer_pod, address, city, state, zip, truck_lat, truck_lon
+          ]
+        end
+      end
+    end
+  end
 
   def get_weekly_rows(json)
     rows = []

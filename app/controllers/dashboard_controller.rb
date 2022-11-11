@@ -27,7 +27,8 @@ class DashboardController < ApplicationController
   end
 
   def submit_fp_csvs
-    ImportShiftReportFromFpJson.new(@fp_json_files, @fp_file_type).execute
+    # ImportShiftReportFromFpJson.new(@fp_json_files, @fp_file_type).execute
+    ImportShiftReportFromFpJson.new(@fp_json_files, @fp_file_type).routes
     redirect_back(fallback_location: root_path)
   end
 

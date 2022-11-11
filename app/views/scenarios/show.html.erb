@@ -30,5 +30,11 @@
     <div class="col-sm-10">
       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=@scenario.miles_saved%>">
     </div>
-  </div>  
+  </div> 
+  <div class="form-group row"> 
+    <%= label_tag :files, "Files", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= link_to "Files for comparison", @scenario.files, target: "_blank" if @scenario.files %>
+    </div>
+  </div> 
 </div>
