@@ -5,40 +5,56 @@ class ScenariosController < ApplicationController
   end
 
   def new
-    @scenario = Scenario.new
+    if user_signed_in?
+      @scenario = Scenario.new
+    else
+      redirect_to :action => "index"
+    end
   end
 
   def create
-    @scenario = Scenario.new
-    @scenario.attributes = scenario_params
-    @scenario.save
-
+    if user_signed_in?
+      @scenario = Scenario.new
+      @scenario.attributes = scenario_params
+      @scenario.save
+    end
     redirect_to :action => "index"
   end
 
   def edit
-    @scenario = Scenario.find_by(id: params[:id])
+    if user_signed_in?
+      @scenario = Scenario.find_by(id: params[:id])
+    else
+      redirect_to :action => "index"
+    end
   end
 
   def update
-    @scenario = Scenario.find_by(id: params[:id])
-    @scenario.attributes = scenario_params
-    @scenario.save
-
+    if user_signed_in?
+      @scenario = Scenario.find_by(id: params[:id])
+      @scenario.attributes = scenario_params
+      @scenario.save
+    end
     redirect_to :action => "index"
   end
 
   def destroy
-    @scenario = Scenario.find_by(id: params[:id])
-    @scenario.destroy
+    if user_signed_in?
+      @scenario = Scenario.find_by(id: params[:id])
+      @scenario.destroy
+    end
 
     redirect_to :action => "index"
+  end
+
+  def show
+    @scenario = Scenario.find_by(id: params[:id])
   end
 
   private
 
   def scenario_params
-    params.require(:scenario).permit(:name, :description)
+    params.require(:scenario).permit(:name, :description, :link, :version, :hours_saved, :miles_saved)
   end 
 end
 

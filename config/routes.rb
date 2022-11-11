@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   post "/submit_fp_csvs", to:"dashboard#submit_fp_csvs"
 
   resources :scenarios
+
+  devise_scope :user do  
+    get '/users/sign_out' => 'devise/sessions#destroy'     
+  end
   
 end

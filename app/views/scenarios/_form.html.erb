@@ -9,6 +9,19 @@
       <td><%= s.text_area :description, cols: 60, rows: 3 %> </td>
     </tr>
     <tr>
+      <td><%= s.label :link, "Link" %></td>
+      <td><%= s.text_field :link %> </td>
+      <td><%= s.label :version, "Version" %></td>
+      <td><%= s.text_field :version %> </td>
+    </tr>
+
+    <tr>
+      <td><%= s.label :hours_saved, "Hours saved" %></td>
+      <td><%= s.number_field :hours_saved, step: :any %> </td>
+      <td><%= s.label :miles_saved, "Miles saved" %></td>
+      <td><%= s.number_field :miles_saved, step: :any %> </td>
+    </tr>
+    <tr>
       <td colspan="3"><%= s.submit label, :disable_with => "Proccessing..."%> </td>
     </tr>
   </table>

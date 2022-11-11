@@ -1,0 +1,29 @@
+<br />
+<table>
+  <tr>
+    <td><%= label_tag :name, "Name" %></td>
+    <td><%= @scenario.name %> </td>
+  </tr>
+  <tr>
+    <td><%= label_tag :description %></td>
+    <td><%= @scenario.description %> </td>
+  </tr>
+  <tr>
+    <td><%= label_tag :link, "Link" %></td>
+    <td><%= link_to "link", @scenario.link if @scenario.link %> </td>
+  </tr>
+  <tr>
+    <td><%= label_tag :version, "Version" %></td>
+    <td><%= @scenario.version %> </td>
+  </tr>
+
+  <tr>
+    <td><%= label_tag :hours_saved, "Hours saved" %></td>
+    <td><%= @scenario.hours_saved %> </td>
+  </tr>
+  <tr>
+    <td><%= label_tag :miles_saved, "Miles saved" %></td>
+    <td><%= @scenario.miles_saved %> </td>
+  </tr>
+
+</table>
