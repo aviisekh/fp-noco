@@ -1,0 +1,3 @@
+class ReportTotal < ApplicationRecord
+
+end
