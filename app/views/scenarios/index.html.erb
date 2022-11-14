@@ -6,6 +6,8 @@
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
+      <th scope="col">Link</th>
+      <th scope="col">Files</th>
       <th scope="col" colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +18,16 @@
         <td><%= scenario.id %></td>
         <td><%= scenario.name %></td>
         <td><%= scenario.description %></td>
+        <td>
+          <%  if scenario.link.present? %>
+            <%= link_to "Link", scenario.link %>
+          <% end %>
+        </td>
+        <td>
+          <% if scenario.files.present? %>
+            <%= link_to "Files", scenario.files, target: "_blank" %>
+          <% end %>
+        </td>
         <% if user_signed_in? %>
           <td><%= link_to "Edit", edit_scenario_path(scenario) %></td>
           <td><%= link_to "Destroy", scenario, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
