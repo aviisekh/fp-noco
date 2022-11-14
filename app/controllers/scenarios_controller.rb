@@ -1,7 +1,7 @@
 class ScenariosController < ApplicationController
 
   def index
-    @scenarios = Scenario.all
+    @scenarios = Scenario.order(:id).all
   end
 
   def new

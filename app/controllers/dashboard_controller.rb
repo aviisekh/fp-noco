@@ -72,7 +72,7 @@ class DashboardController < ApplicationController
         vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day
       ].each do |field|
       @totals_data['delta'][field] =
-        @totals_data[types[delta_fields[field][0]]][field] - @totals_data[types[delta_fields[field][1]]][field]
+        @totals_data[types[delta_fields[field][0]]][field].to_f - @totals_data[types[delta_fields[field][1]]][field].to_f
     end
 
   end
