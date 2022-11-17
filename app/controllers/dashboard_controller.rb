@@ -72,26 +72,9 @@ class DashboardController < ApplicationController
         vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day
       ].each do |field|
       @totals_data['delta'][field] =
-        @totals_data[types[delta_fields[field][0]]][field].to_f - @totals_data[types[delta_fields[field][1]]][field].to_f
+        @totals_data[types[0]][field].to_f - @totals_data[types[1]][field].to_f
     end
 
-  end
-
-  def delta_fields
-    {
-      total_hours: [0, 1],
-      deliveries: [1, 0],
-      total_volume: [1, 0],
-      total_miles: [0, 1],
-      total_time_delivery: [1, 0],
-      fill_rate: [1, 0],
-      speed: [1, 0],
-      vol_per_miles: [1, 0],
-      volume_per_delivery: [1, 0],
-      vol_per_hour_worked: [1, 0],
-      delivery_hour: [1, 0],
-      delivery_day: [1, 0]
-  }.with_indifferent_access
   end
 
   def sum_field?(field)
