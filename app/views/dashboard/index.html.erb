@@ -33,34 +33,34 @@
         <% if key == 'delta' %>
           <tr>
             <td></td>
-            <td class="<%= @totals_data[key]['deliveries'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['deliveries'], precision: 0)%></td>
-            <td class="<%= @totals_data[key]['total_hours'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['total_hours'], precision: 0)%></td>
-            <td class="<%= @totals_data[key]['total_volume'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['total_volume'], precision: 0)%></td>
-            <td class="<%= @totals_data[key]['total_miles'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['total_miles'], precision: 0)%></td>
-            <td class="<%= @totals_data[key]['total_time_delivery'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['total_time_delivery'], precision: 0)%></td>
-            <td class="<%= @totals_data[key]['fill_rate'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['fill_rate'], precision: 2) %></td>
-            <td class="<%= @totals_data[key]['speed'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['speed'], precision: 0)%></td>
-            <td class="<%= @totals_data[key]['vol_per_miles'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['vol_per_miles'], precision: 0)%></td>
-            <td class="<%= @totals_data[key]['volume_per_delivery'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['volume_per_delivery'], precision: 0)%></td>
-            <td class="<%= @totals_data[key]['vol_per_hour_worked'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['vol_per_hour_worked'], precision: 0)%></td>
-            <td class="<%= @totals_data[key]['delivery_hour'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['delivery_hour'], precision: 2) %></td>
-            <td class="<%= @totals_data[key]['delivery_day'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['delivery_day'], precision: 0) %></td>
+            <td><%= number_with_precision(@totals_data[key]['deliveries'], precision: 0, delimiter: ',')%></td>
+            <td class="<%= @totals_data[key]['total_hours'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['total_hours'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['total_volume'], precision: 0, delimiter: ',')%></td>
+            <td class="<%= @totals_data[key]['total_miles'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['total_miles'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['total_time_delivery'], precision: 0, delimiter: ',')%></td>
+            <td class="<%= @totals_data[key]['fill_rate'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['fill_rate'], precision: 2, delimiter: ',') %></td>
+            <td><%= number_with_precision(@totals_data[key]['speed'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['vol_per_miles'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['volume_per_delivery'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['vol_per_hour_worked'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['delivery_hour'], precision: 2, delimiter: ',') %></td>
+            <td><%= number_with_precision(@totals_data[key]['delivery_day'], precision: 0, delimiter: ',') %></td>
           </tr>
         <% else %>
           <tr>
             <td><%= key %></td>
-            <td><%= number_with_precision(@totals_data[key]['deliveries'], precision: 0)%></td>
-            <td><%= number_with_precision(@totals_data[key]['total_hours'], precision: 0)%></td>
-            <td><%= number_with_precision(@totals_data[key]['total_volume'], precision: 0)%></td>
-            <td><%= number_with_precision(@totals_data[key]['total_miles'], precision: 0)%></td>
-            <td><%= number_with_precision(@totals_data[key]['total_time_delivery'], precision: 0)%></td>
-            <td><%= number_with_precision(@totals_data[key]['fill_rate'], precision: 2) %></td>
-            <td><%= number_with_precision(@totals_data[key]['speed'], precision: 0)%></td>
-            <td><%= number_with_precision(@totals_data[key]['vol_per_miles'], precision: 0)%></td>
-            <td><%= number_with_precision(@totals_data[key]['volume_per_delivery'], precision: 0)%></td>
-            <td><%= number_with_precision(@totals_data[key]['vol_per_hour_worked'], precision: 0)%></td>
-            <td><%= number_with_precision(@totals_data[key]['delivery_hour'], precision: 2) %></td>
-            <td><%= number_with_precision(@totals_data[key]['delivery_day'], precision: 0) %></td>
+            <td><%= number_with_precision(@totals_data[key]['deliveries'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['total_hours'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['total_volume'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['total_miles'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['total_time_delivery'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['fill_rate'], precision: 2, delimiter: ',') %></td>
+            <td><%= number_with_precision(@totals_data[key]['speed'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['vol_per_miles'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['volume_per_delivery'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['vol_per_hour_worked'], precision: 0, delimiter: ',')%></td>
+            <td><%= number_with_precision(@totals_data[key]['delivery_hour'], precision: 2, delimiter: ',') %></td>
+            <td><%= number_with_precision(@totals_data[key]['delivery_day'], precision: 0, delimiter: ',') %></td>
           </tr>
         <% end %>
       <% end %>
