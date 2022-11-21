@@ -38,7 +38,7 @@
             <td><%= number_with_precision(@totals_data[key]['total_volume'], precision: 0, delimiter: ',')%></td>
             <td class="<%= @totals_data[key]['total_miles'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['total_miles'], precision: 0, delimiter: ',')%></td>
             <td><%= number_with_precision(@totals_data[key]['total_time_delivery'], precision: 0, delimiter: ',')%></td>
-            <td class="<%= @totals_data[key]['fill_rate'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['fill_rate'], precision: 2, delimiter: ',') %></td>
+            <td class="<%= @totals_data[key]['fill_rate'].negative? ? "bg-success" : 'bg-danger' %>"><%= number_with_precision(@totals_data[key]['fill_rate'], precision: 2, delimiter: ',') %></td>
             <td><%= number_with_precision(@totals_data[key]['speed'], precision: 0, delimiter: ',')%></td>
             <td><%= number_with_precision(@totals_data[key]['vol_per_miles'], precision: 0, delimiter: ',')%></td>
             <td><%= number_with_precision(@totals_data[key]['volume_per_delivery'], precision: 0, delimiter: ',')%></td>
