@@ -50,7 +50,7 @@ class DashboardController < ApplicationController
       values = ReportTotal.where(report_type: key, shift_date: dates[0]..dates[1]).group(:report_type)
       select_fields = []
       %w[total_hours deliveries total_volume total_miles total_time_delivery fill_rate speed
-        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day
+        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day total_returns
       ].each do |field|
         if sum_field?(field)
           # @totals_data[key][field] = values.sum(field)[key]
@@ -62,14 +62,14 @@ class DashboardController < ApplicationController
       end
       values = values.select(select_fields.join(', ')).first
       %w[total_hours deliveries total_volume total_miles total_time_delivery fill_rate speed
-        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day
+        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day total_returns
       ].each do |field|
         @totals_data[key][field] = values.send(field)
       end
     end
     @totals_data['delta'] = {}
     %w[total_hours deliveries total_volume total_miles total_time_delivery fill_rate speed
-        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day
+        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day total_returns
       ].each do |field|
       @totals_data['delta'][field] =
         @totals_data[types[0]][field].to_f - @totals_data[types[1]][field].to_f
@@ -78,7 +78,7 @@ class DashboardController < ApplicationController
   end
 
   def sum_field?(field)
-    %w[total_hours deliveries total_volume total_miles total_time_delivery].include? field
+    %w[total_hours deliveries total_volume total_miles total_time_delivery total_returns].include? field
   end
 
   def chart_params

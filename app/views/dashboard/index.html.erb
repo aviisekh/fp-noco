@@ -1,9 +1,9 @@
 <style>
   .table-responsive {
-    font-size: 20px;
+    font-size: 15px;
   }
 </style>
-<h1>FP Noco Analysis:   <%= @range.split('~').join(' - ') %></h1>
+<h1>FP Noco Analysis:   <%= @range.split('~').map { |x| x.to_date.strftime('%B %d, %Y') }.join(' - ') %></h1>
 <% if @scenario %>
   <h2><%=@scenario.name%><h2>
   <%= @scenario.description %>
@@ -17,22 +17,23 @@
       <tr>
         <th scope="col">type</th>
         <th scope="col">Deliveries</th>
-        <th scope="col">Hours</th>
+        <th scope="col">Hours*</th>
         <th scope="col">Gals</th>
         <th scope="col">Miles</th>
         <th scope="col">Time servicing</th>
         <th scope="col">Fill rate</th>
-        <th scope="col">Miles/hour</th>
+        <th scope="col">Miles/hour*</th>
         <th scope="col">Gals/miles</th>
         <th scope="col">Gals/delivery</th>
-        <th scope="col">Gals/hour</th>
-        <th scope="col">Delivery/hour</th>
+        <th scope="col">Gals/hour*</th>
+        <th scope="col">Delivery/hour*</th>
         <th scope="col">Delivery/day</th>
+        <th scope="col">Returns</th>
       </tr>
       <% @totals_data.each_key do |key| %>
         <% if key == 'delta' %>
           <tr>
-            <td></td>
+            <td><%= "#{@totals_data.keys[0]} - #{@totals_data.keys[1]}" %></td>
             <td><%= number_with_precision(@totals_data[key]['deliveries'], precision: 0, delimiter: ',')%></td>
             <td class="<%= @totals_data[key]['total_hours'].negative? ? "bg-danger" : 'bg-success' %>"><%= number_with_precision(@totals_data[key]['total_hours'], precision: 0, delimiter: ',')%></td>
             <td><%= number_with_precision(@totals_data[key]['total_volume'], precision: 0, delimiter: ',')%></td>
@@ -45,6 +46,7 @@
             <td><%= number_with_precision(@totals_data[key]['vol_per_hour_worked'], precision: 0, delimiter: ',')%></td>
             <td><%= number_with_precision(@totals_data[key]['delivery_hour'], precision: 2, delimiter: ',') %></td>
             <td><%= number_with_precision(@totals_data[key]['delivery_day'], precision: 0, delimiter: ',') %></td>
+            <td><%= number_with_precision(@totals_data[key]['total_returns'], precision: 0, delimiter: ',') %></td>
           </tr>
         <% else %>
           <tr>
@@ -61,6 +63,7 @@
             <td><%= number_with_precision(@totals_data[key]['vol_per_hour_worked'], precision: 0, delimiter: ',')%></td>
             <td><%= number_with_precision(@totals_data[key]['delivery_hour'], precision: 2, delimiter: ',') %></td>
             <td><%= number_with_precision(@totals_data[key]['delivery_day'], precision: 0, delimiter: ',') %></td>
+            <td><%= number_with_precision(@totals_data[key]['total_returns'], precision: 0, delimiter: ',') %></td>
           </tr>
         <% end %>
       <% end %>
@@ -75,3 +78,6 @@
     height="1000"
     allowtransparency
 ></iframe>
+<div>
+  <font size="-1">*Noco hours do not only include travel time, it is basically shift duration, which can include other activities in addition to travel time, such as office time, lunch time, etc. On the other hand, FP hours includes only travel time and service time</font>
+</div>
