@@ -52,7 +52,17 @@ class DashboardController < ApplicationController
       %w[total_hours deliveries total_volume total_miles total_time_delivery fill_rate speed
         vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day total_returns
       ].each do |field|
-        if sum_field?(field)
+        if field == 'volume_per_delivery'
+          select_fields << "sum(total_volume)/sum(NULLIF(deliveries, 0)::double precision) as #{field}"
+        elsif field == 'vol_per_miles'
+          select_fields << "sum(total_volume)/sum(NULLIF(total_miles, 0)::double precision) as #{field}"
+        elsif field == 'vol_per_hour_worked'
+          select_fields << "sum(total_volume)/sum(NULLIF(total_hours, 0)::double precision) as #{field}"
+        elsif field == 'delivery_hour'
+          select_fields << "sum(deliveries::double precision)/sum(NULLIF(total_hours, 0)::double precision) as #{field}"
+        elsif field == 'delivery_day'
+          select_fields << "sum(deliveries::double precision)/sum(NULLIF(number_days, 0)) as #{field}"
+        elsif sum_field?(field)
           # @totals_data[key][field] = values.sum(field)[key]
           select_fields << "sum(#{field}) as #{field}" 
         else
