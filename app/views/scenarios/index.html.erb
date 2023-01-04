@@ -45,4 +45,6 @@
 
 <br>
 
-<%= link_to "New Scenario", new_scenario_path %>
+<% if user_signed_in? %>
+  <%= link_to "New Scenario", new_scenario_path %>
+<% end %>
