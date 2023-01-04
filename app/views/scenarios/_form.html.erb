@@ -38,6 +38,10 @@
       <div class="col-sm-10">
         <%= s.text_field :files, class: "form-control" %> 
       </div>
+      <%= s.label :date, "Date", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= s.date_field :date, class: "form-control" %>
+      </div>
     </div>
     <%= s.submit label, :disable_with => "Proccessing...", class: "btn btn-primary"%>
     

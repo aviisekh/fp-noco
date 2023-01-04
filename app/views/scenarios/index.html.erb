@@ -6,6 +6,7 @@
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
+      <th scope="col">Date</th>
       <th scope="col">Link</th>
       <th scope="col">Files</th>
       <th scope="col" colspan="3"></th>
@@ -18,6 +19,7 @@
         <td><%= scenario.id %></td>
         <td><%= scenario.name %></td>
         <td><%= scenario.description %></td>
+        <td><%= I18n.l scenario.date rescue '' %></td>
         <td>
           <%  if scenario.link.present? %>
             <%= link_to "Link", scenario.link %>
