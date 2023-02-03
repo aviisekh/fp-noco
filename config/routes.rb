@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/submit_fp_csvs", to:"dashboard#submit_fp_csvs"
 
   resources :scenarios
+  resources :sequential_usages, only: %i[index]
   resources :dashboard, only: %i[index]
 
   devise_scope :user do  

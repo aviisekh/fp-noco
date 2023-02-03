@@ -28,6 +28,7 @@
         <th scope="col">Gals/hour*</th>
         <th scope="col">Delivery/hour*</th>
         <th scope="col">Delivery/day</th>
+        <th scope="col">Delivery/route</th>
         <th scope="col">Returns</th>
       </tr>
       <% @totals_data.each_key do |key| %>
@@ -46,6 +47,7 @@
             <td><%= number_with_precision(@totals_data[key]['vol_per_hour_worked'], precision: 0, delimiter: ',')%></td>
             <td><%= number_with_precision(@totals_data[key]['delivery_hour'], precision: 2, delimiter: ',') %></td>
             <td><%= number_with_precision(@totals_data[key]['delivery_day'], precision: 0, delimiter: ',') %></td>
+            <td><%= number_with_precision(@totals_data[key]['delivery_route'], precision: 0, delimiter: ',') %></td>
             <td><%= number_with_precision(@totals_data[key]['total_returns'], precision: 0, delimiter: ',') %></td>
           </tr>
         <% else %>
@@ -63,6 +65,7 @@
             <td><%= number_with_precision(@totals_data[key]['vol_per_hour_worked'], precision: 0, delimiter: ',')%></td>
             <td><%= number_with_precision(@totals_data[key]['delivery_hour'], precision: 2, delimiter: ',') %></td>
             <td><%= number_with_precision(@totals_data[key]['delivery_day'], precision: 0, delimiter: ',') %></td>
+            <td><%= number_with_precision(@totals_data[key]['delivery_route'], precision: 0, delimiter: ',') %></td>
             <td><%= number_with_precision(@totals_data[key]['total_returns'], precision: 0, delimiter: ',') %></td>
           </tr>
         <% end %>

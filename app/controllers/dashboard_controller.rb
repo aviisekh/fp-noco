@@ -28,8 +28,8 @@ class DashboardController < ApplicationController
   end
 
   def submit_fp_csvs
-    # ImportShiftReportFromFpJson.new(@fp_json_files, @fp_file_type).execute
-    ImportShiftReportFromFpJson.new(@fp_json_files, @fp_file_type).routes
+    ImportShiftReportFromFpJson.new(@fp_json_files, @fp_file_type).execute
+    # ImportShiftReportFromFpJson.new(@fp_json_files, @fp_file_type).routes
     redirect_back(fallback_location: root_path)
   end
 
@@ -50,7 +50,7 @@ class DashboardController < ApplicationController
       values = ReportTotal.where(report_type: key, shift_date: dates[0]..dates[1]).group(:report_type)
       select_fields = []
       %w[total_hours deliveries total_volume total_miles total_time_delivery fill_rate speed
-        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day total_returns
+        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day delivery_route total_returns
       ].each do |field|
         if field == 'volume_per_delivery'
           select_fields << "sum(total_volume)/sum(NULLIF(deliveries, 0)::double precision) as #{field}"
@@ -72,14 +72,14 @@ class DashboardController < ApplicationController
       end
       values = values.select(select_fields.join(', ')).first
       %w[total_hours deliveries total_volume total_miles total_time_delivery fill_rate speed
-        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day total_returns
+        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day delivery_route total_returns
       ].each do |field|
         @totals_data[key][field] = values.send(field)
       end
     end
     @totals_data['delta'] = {}
     %w[total_hours deliveries total_volume total_miles total_time_delivery fill_rate speed
-        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day total_returns
+        vol_per_miles volume_per_delivery vol_per_hour_worked delivery_hour delivery_day delivery_route total_returns
       ].each do |field|
       @totals_data['delta'][field] =
         @totals_data[types[0]][field].to_f - @totals_data[types[1]][field].to_f

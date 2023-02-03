@@ -13,18 +13,19 @@ class ImportShiftReportFromFpJson
   def execute
     @files.each do |f|
       json = JSON.load f.read
-      rows = []
       columns = ["driver_id", "truck_id", "shift_date", "shift", "duration_hours", "deliveries", "volume", "distance", "delivery_time_minutes", "type", "cluster", "fill_rate"]
-      unless @weekly
-        rows = get_rows(json)
-      else
-        if json.is_a? Array
-          rows = get_weekly_rows_array(json)
-        else
-          # rows = get_weekly_rows(json)
-          rows = get_weekly_rows_per_day(json, f.original_filename)
-        end
-      end
+      # unless @weekly
+      #   rows = get_rows(json)
+      # else
+      #   if json.is_a? Array
+      #     rows = get_weekly_rows_array(json)
+      #   else
+      #     # rows = get_weekly_rows(json)
+      #     rows = get_weekly_rows_per_day(json, f.original_filename)
+      #   end
+      # end
+      # rows = get_rows_with_constraints_daily_v2(json, f.original_filename)
+      rows = get_weekly_rows_per_day(json, f.original_filename)
       ReportShift.import columns, rows
     end
   end
@@ -36,11 +37,98 @@ class ImportShiftReportFromFpJson
         json = JSON.load f.read
         # get_routes(json, csv)
         get_routes_per_day(json, csv, f.original_filename)
+        # get_routes_per_day_v3(json, csv, f.original_filename)
       end
     end
   end
 
   private
+
+  def get_routes_per_day_v2(json, csv, file_name)
+    base_day = file_name.to_date
+    json = json.map(&:with_indifferent_access)
+    shifts = {}
+
+    json.each do |key|
+      key[:fpClusters].each_key do |cluster|
+        key[:fpClusters][cluster][:paths].each do |day|
+          truck_id = day.dig(:vehicle, :id)
+          truck_lat = day.dig(:base, :lat).to_f
+          truck_lon = day.dig(:base, :lon).to_f
+          driver_id = 0
+          shift_date = base_day
+          if shifts[:truck_id]
+            shifts[truck_id] += 1
+          else
+            shifts[truck_id] = 1
+          end
+          shift = shifts[truck_id]
+
+          day[:path].each do |route|
+
+            amount = route.dig(:product, :amount).to_f
+            product_name = route.dig(:product, :name)
+            delivery_time = route.dig(:duration, :minutes).to_i
+            lat = route.dig(:location, :lat).to_f
+            lon = route.dig(:location, :lon).to_f
+            customer_pod = route.dig(:location, :id)
+            address = route.dig(:location, :place)
+            city = route.dig(:location, :city)
+            state = route.dig(:location, :state)
+            zip = route.dig(:location, :zip)
+
+            csv << [
+              shift_date, truck_id, driver_id, shift, product_name, amount, delivery_time, lat, lon,
+              customer_pod, address, city, state, zip, truck_lat, truck_lon
+            ]
+          end
+        end
+      end
+    end
+  end
+
+  def get_routes_per_day_v3(json, csv, file_name)
+    base_day = file_name.split('T').first.to_date
+    json = json.with_indifferent_access
+    shifts = {}
+
+    json.each_key do |cluster|
+      json[cluster].each_key do |cluster_route|
+        json[cluster][cluster_route].each do |day|
+          truck_id = day[:truck]
+          truck_lat = day.dig(:base, :lat).to_f
+          truck_lon = day.dig(:base, :lon).to_f
+          driver_id = 0
+          shift_date = base_day
+          if shifts[:truck_id]
+            shifts[truck_id] += 1
+          else
+            shifts[truck_id] = 1
+          end
+          shift = shifts[truck_id]
+
+          day[:route].each do |route|
+
+            amount = route.dig(:product, :amount).to_f
+            product_name = route.dig(:product, :name)
+            delivery_time = route.dig(:duration, :minutes).to_i
+            lat = route.dig(:location, :lat).to_f
+            lon = route.dig(:location, :lon).to_f
+            customer_pod = route.dig(:location, :id)
+            address = route.dig(:location, :place)
+            city = route.dig(:location, :city)
+            state = route.dig(:location, :state)
+            zip = route.dig(:location, :zip)
+
+            csv << [
+              shift_date, truck_id, driver_id, shift, product_name, amount, delivery_time, lat, lon,
+              customer_pod, address, city, state, zip, truck_lat, truck_lon
+            ]
+          end
+        end
+      end
+    end
+  end
 
   def get_routes_per_day(json, csv, file_name)
     base_day = file_name.split('T').first.to_date
@@ -233,8 +321,148 @@ class ImportShiftReportFromFpJson
           volume += amount
           delivery_time += path.dig(:duration, :minutes).to_i
         end
+        used_time = (used_time/60.0) + (delivery_time/60.0)
         # csv << [driver_id, truck_id, shift_date, 1, used_time, deliveries, volume, (used_km * 0.621371), delivery_time, 'FP']
-        rows << [truck_id, driver_id, shift_date, 1, (used_time/60.0), deliveries, volume, used_miles, delivery_time, @identifier, cluster_id, (fill_rate.sum(0.0) / fill_rate.size)]
+        rows << [truck_id, driver_id, shift_date, 1, used_time, deliveries, volume, used_miles, delivery_time, @identifier, cluster_id, (fill_rate.sum(0.0) / fill_rate.size)]
+      end
+    end
+    rows
+  end
+
+  def get_rows_with_constraints_daily_v2(json, file_name)
+    rows = []
+    json = json.with_indifferent_access
+    shift_date = file_name.split('T').first.to_date
+    json.each_key do |cluster|
+      json[cluster].each_key do |cluster_route|
+        cluster_id = cluster
+        json[cluster][cluster_route].each do |base_path|
+          used_miles = base_path.dig(:toBase, :distanceTo).to_f
+          used_time = base_path.dig(:toBase, :travelTime).to_f
+          deliveries = 0
+          volume = 0
+          delivery_time = 0
+          fill_rate = []
+
+          truck_id = base_path[:truck]
+          driver_id = 0
+
+          origin = {
+            lat: base_path.dig(:base, :lat),
+            lon: base_path.dig(:base, :lon)
+          }
+
+          base_path[:route].each do |path|
+            ori_lat = origin[:lat]
+            ori_lon = origin[:lon]
+            origin = {
+              lat: path.dig(:location, :lat),
+              lon: path.dig(:location, :lon)
+            }
+            dest_lat = origin[:lat]
+            dest_lon = origin[:lon]
+            # str_url = "#{base_url}origins=#{ori_lat}%2C#{ori_lon}&destinations=#{dest_lat}%2C#{dest_lon}&key=#{key}"
+            # url = URI(str_url)
+
+            # https = Net::HTTP.new(url.host, url.port)
+            # https.use_ssl = true
+
+            # request = Net::HTTP::Get.new(url)
+
+            # response = https.request(request)
+            # resp_res = JSON.load response.read_body
+            # resp_res = resp_res.with_indifferent_access
+
+            # used_km += resp_res[:rows][0][:elements][0][:distance][:value] / 1000
+            # used_time += resp_res[:rows][0][:elements][0][:duration][:value].to_f / 60
+
+            used_miles += path[:distanceTo].to_f
+            used_time += path[:travelTime].to_f
+
+            amount = path.dig(:product, :amount).to_f
+            tank = @customers_sizes.select { |row| row['customer_pod'] == path.dig(:location, :id) }.first
+            if tank
+              fill_rate << (amount / tank['size_in_gallons'].to_f)
+            end
+
+            deliveries += 1
+            volume += path.dig(:product, :amount).to_f
+            delivery_time += path.dig(:duration, :minutes).to_i
+          end
+          used_time = (used_time/60.0) + (delivery_time/60.0)
+          rows << [truck_id, driver_id, shift_date, 1, used_time, deliveries, volume, used_miles, delivery_time, @identifier, cluster_id, (fill_rate.sum(0.0) / fill_rate.size)]
+          print "#{rows.size} "
+        end
+      end
+    end
+    rows
+  end
+
+  def get_rows_with_constraints_daily(json, file_name)
+    rows = []
+    json = json.map(&:with_indifferent_access)
+    json.each do |route|
+      shift_date = file_name.to_date
+      route[:fpClusters].each_key do |cluster|
+        cluster_id = cluster
+        route[:fpClusters][cluster][:paths].each do |base_path|
+          used_miles = base_path.dig(:toBase, :distanceTo).to_f
+          used_time = base_path.dig(:toBase, :travelTime).to_f
+          deliveries = 0
+          volume = 0
+          delivery_time = 0
+          fill_rate = []
+
+          truck_id = base_path.dig(:vehicle, :id)
+          driver_id = base_path.dig(:driver, :id)
+
+          origin = {
+            lat: base_path.dig(:base, :lat),
+            lon: base_path.dig(:base, :lon)
+          }
+
+          base_path[:path].each do |path|
+            ori_lat = origin[:lat]
+            ori_lon = origin[:lon]
+            origin = {
+              lat: path.dig(:location, :lat),
+              lon: path.dig(:location, :lon)
+            }
+            dest_lat = origin[:lat]
+            dest_lon = origin[:lon]
+            # str_url = "#{base_url}origins=#{ori_lat}%2C#{ori_lon}&destinations=#{dest_lat}%2C#{dest_lon}&key=#{key}"
+            # url = URI(str_url)
+
+            # https = Net::HTTP.new(url.host, url.port)
+            # https.use_ssl = true
+
+            # request = Net::HTTP::Get.new(url)
+
+            # response = https.request(request)
+            # resp_res = JSON.load response.read_body
+            # resp_res = resp_res.with_indifferent_access
+
+            # used_km += resp_res[:rows][0][:elements][0][:distance][:value] / 1000
+            # used_time += resp_res[:rows][0][:elements][0][:duration][:value].to_f / 60
+
+            used_miles += path[:distanceTo].to_f
+            used_time += path[:travelTime].to_f
+
+            amount = path.dig(:product, :amount).to_f
+            tank = @customers_sizes.select { |row| row['customer_pod'] == path.dig(:location, :id) }.first
+            if tank
+              fill_rate << (amount / tank['size_in_gallons'].to_f)
+            end
+
+            deliveries += 1
+            volume += path.dig(:product, :amount).to_f
+            delivery_time += path.dig(:duration, :minutes).to_i
+          end
+          # csv << [driver_id, truck_id, shift_date, 1, used_time, deliveries, volume, (used_km * 0.621371), delivery_time, 'FP']
+          used_time = (used_time/60.0) + (delivery_time/60.0)
+          rows << [truck_id, driver_id, shift_date, 1, used_time, deliveries, volume, used_miles, delivery_time, @identifier, cluster_id, (fill_rate.sum(0.0) / fill_rate.size)]
+          print "#{rows.size} "
+        end
       end
     end
     rows

@@ -1,5 +1,4 @@
 <h1>Listing Scenarios</h1>
-
 <table class="table">
   <thead>
     <tr>
@@ -42,9 +41,12 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
 <% if user_signed_in? %>
   <%= link_to "New Scenario", new_scenario_path %>
 <% end %>
+<br>
+
+<h2>Sequential route</h2>
+<div>
+  <%= link_to "Sequential route usage", sequential_usages_path %>
+</div>
